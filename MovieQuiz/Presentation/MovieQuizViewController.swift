@@ -110,11 +110,16 @@ final class MovieQuizViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ?
-        UIColor(hexString: "60C28E").cgColor :
-        UIColor(hexString: "F56B6C").cgColor
+        UIColor(named: "colorGreen")?.cgColor :
+        UIColor(named: "colorRed")?.cgColor
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.showNextQuestionOrResults()
+            self.imageView.layer.borderColor = UIColor.clear.cgColor
+            self.yesButton.isEnabled = true
+            self.noButton.isEnabled = true
         }
     }
     
